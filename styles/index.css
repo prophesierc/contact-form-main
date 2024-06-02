@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Karla';
+    src: url('../assets/fonts/Karla-VariableFont_wght.ttf');
+}
+@font-face {
+    font-family: 'Karla-Italic';
+    src: url('../assets/fonts/Karla-Italic-VariableFont_wght.ttf');
+}
+* {
+    box-sizing: border-box;
+}
+:root {
+    /* colors */
+    --primary-clr-green-200: hsl(148, 38%, 91%);
+    --primary-clr-green-600:hsl(169, 82%, 27%);
+    --primary-clr-red: hsl(0, 66%, 54%);
+    --neutral-clr-white: hsl(0, 0%, 100%);
+    --neutral-clr-grey-500: hsl(186, 15%, 59%);
+    --neutral-clr-grey-900: hsl(187, 24%, 22%);   
+
+    /* Fonts */
+    --ff-Karla: 'Karla';
+    --ff-Karla-italic: 'Karla-Italic'; 
+
+    /* Font Size */
+    --fs-label: 16px;
+
+    /* Font Weights */
+    --fw-regular: 400;
+    --fw-bold:700;
+
+    /* border radius */
+    --br: 8px;
+}
+body{
+    background-color: var(--primary-clr-green-200);
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-container{
+    margin: 2rem 0 0 0;
+    min-width: 90vw;
+    height: 90vh;
+    border-radius: var(--br);
+    background-color: var(--neutral-clr-white);
+}
+input{
+    width: 10%;
+}
+label{
+    font-family: var(--ff-Karla);
+    font-size: var(--fs-label);
+    font-weight: var(--fw-regular);
+}
+
+.required, .required-email-text, .required-query-radio,
+ .required-consent-form, .success-toast{
+    display: none;
+}
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+}
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}

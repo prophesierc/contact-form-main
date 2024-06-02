@@ -2,47 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styles/index.css">
+  <script src="./scripts/index.js"></script> 
   
   <title>Frontend Mentor | Contact form</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+
 </head>
 <body>
+  <div class="wrapper">
+    
+    <form class="form-container">
+      <h1>Contact Us</h1>
 
-  Contact Us
+      <label for="fname-text">First Name *</label><br>
+        <p class="required">This field is required</p>
+      <input type="text" id="fname-text" name="fname-text"><br>
+    
+      <label for="lname-text">Last Name *</label><br>
+        <p class="required">"This field is required</p>
+      <input type="text" id="lname-text" name="lname-text"><br>
+     
+      <label for="email-text">Email Address *</label><br>
+        <p class="required-email-text">Please enter a valid email address</p>
+        <p class="required">This field is required</p>
+      <input type="text" id="email-text" name="email-text">
 
-  First Name
-  This field is required
+      
+      <p>Query Type *</p>
+      <input type="radio" id="general-radio" name="query-type">
+      <label for="general-radio">General Enquiry</label><br>
+      
+      <input type="radio" id="support-radio" name="query-type">
+      <label for="support-radio">Support Request</label><br>
+        <p class="required-query-radio">Please select a query type</p>
 
-  Last Name
-  This field is required
 
-  Email Address
-  Please enter a valid email address
-  This field is required
+      <label for="message">Message *</label><br>
+      <input type="text" name="message" id="message" ></br>
+        <p class="required">This field is required</p>
 
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
+      <input type="checkbox" name="consent-form-check" id="consent-form-check">
+      <label for="consent-form-check">I consent to being contacted by the team *</label><br>
+      <p class="required-consent-form">To submit this form, please consent to being contacted</p>
 
-  Message
-  This field is required
+      <input type="submit" class="submit-button" value="submit" id="submit-button">
+    </form>
 
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
+      <p class="success-toast">Message Sent!
+      Thanks for completing the form. We'll be in touch soon!</p>
+  </div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
