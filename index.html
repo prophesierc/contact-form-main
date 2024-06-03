@@ -12,24 +12,26 @@
 
 
 </head>
-<body>
-  <div class="wrapper">
-    
+<body>    
     <form class="form-container">
       <div class="content-wrapper">
         <h1>Contact Us</h1>
 
         <div class="name-container">
 
-        <label for="fname-text">First Name </label>
-          <p class="required">This field is required</p>
-        <input type="text" id="fname-text" name="fname-text" class="fname-label">
+          <div class="name-group">
+            <label for="fname-text">First Name </label>
+              <p class="required">This field is required</p>
+            <input type="text" id="fname-text" name="fname-text" class="fname-label">
+          </div>
 
-        <label for="lname-text">Last Name </label>
-          <p class="required">"This field is required</p>
-        <input type="text" id="lname-text" name="lname-text" class="lname-label">
-        
-      </div>
+          <div class="name-group">
+            <label for="lname-text">Last Name </label>
+              <p class="required">"This field is required</p>
+            <input type="text" id="lname-text" name="lname-text" class="lname-label">
+          </div>
+
+        </div>
       
         <label for="email-text">Email Address </label>
           <p class="required-email-text">Please enter a valid email address</p>
@@ -38,22 +40,22 @@
 
         
         <h2>Query Type </h2>
+        <div class="radio-group-container">
+          <div class="radio-wrapper">
 
-        <div class="radio-wrapper">
+            <input type="radio" id="general-radio" name="query-type" value="general-radio">
+            <label for="general-radio" class="general-radio">General Enquiry</label>
 
-          <input type="radio" id="general-radio" name="query-type" value="general-radio">
-          <label for="general-radio" class="general-radio">General Enquiry</label><br>
+          </div>
+            
+          <div class="radio-wrapper">
 
+            <input type="radio" id="support-radio" name="query-type" value="support-radio">
+            <label for="support-radio" class="support-radio">Support Request</label>
+              <p class="required-query-radio">Please select a query type</p>
+
+          </div>
         </div>
-          
-        <div class="radio-wrapper">
-
-          <input type="radio" id="support-radio" name="query-type" value="support-radio">
-          <label for="support-radio" class="support-radio">Support Request</label>
-            <p class="required-query-radio">Please select a query type</p>
-
-        </div>
-
 
         <label for="message">Message </label>
         <input type="text" name="message" id="message" >
@@ -65,7 +67,7 @@
           <p class="required-consent-form">To submit this form, please consent to being contacted</p>
         </div>
 
-        <br><input type="submit" class="submit-button" value="Submit" id="submit-button">
+        <input type="submit" class="submit-button" value="Submit" id="submit-button">
       </div>
     </form>
 
