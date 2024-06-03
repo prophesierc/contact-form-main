@@ -44,7 +44,6 @@ body{
     border-radius: var(--br);
     background-color: var(--neutral-clr-white);
     font-family: var(--ff-Karla);
-    min-height: 80vh;
     max-height: 155vh;
     min-width: 350px;
     max-width: 600px;
