@@ -79,13 +79,14 @@ input[type=text]{
     height: 3rem;
     border: 1px var(--neutral-clr-grey-500) solid;
     border-radius: var(--br);
+    font-size: 20px;
+    font-family: var(--ff-Karla);
 }
 input[type=radio] + label{
     display: inline-flex;
     margin: 1rem 0 1rem 0;
 }
 input[type=radio] {
-    border: 0px;
     margin: 0 .5rem 0 0;    
     height: 1rem;
     width: 1rem;
@@ -131,7 +132,7 @@ input[type=checkbox] {
 }
 .required, .required-query-radio, .required-consent-form{
     color: red;
-    display: flex;
+    display: none;
 }
 .success-toast{
     display: none;
