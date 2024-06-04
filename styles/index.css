@@ -47,14 +47,14 @@ body{
     max-height: 155vh;
     min-width: 350px;
     max-width: 600px;
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;    
 }
 .content-wrapper{
     margin: 0 1.5rem 0 1.5rem;   
 }
 h1{
     font-size: 30px;
-    margin: 1rem 0 1.5rem 0;
+    margin: 2rem 0 1rem 0;
 }
 h2{
     font-size: inherit;
@@ -64,7 +64,7 @@ h2{
 }
 label{    
     display: flex;
-    margin: 1.5rem 0 .5rem 0;
+    margin: 2rem 0 .5rem 0;
     font-size: var(--fs-label);
     font-weight: var(--fw-regular);
     color: var(--neutral-clr-grey-900);    
@@ -91,8 +91,7 @@ input[type=radio] {
     width: 1rem;
 }
 .general-radio, .support-radio {
-    position: relative;
-    top: -1px;
+    top: -2.5px;
 }
 .radio-wrapper{
     padding: 0 0 0 1.5rem;
@@ -102,7 +101,7 @@ input[type=radio] {
 }
 #message{
     height: 15rem;
-    margin: 0 0 3rem 0;
+    margin: 0 0 .5rem 0;
 }
 .checbox-wrapper{
     display: inline-flex;
@@ -111,12 +110,11 @@ input[type=radio] {
 input[type=checkbox] + label{
     font-size: var(--fs-label);
     display: inline;
-    margin: -.5rem 1rem 0 .5rem;
-    line-height: 1.5rem;
+    margin: 1.5rem 1rem 0 .5rem;
     border-radius: 50px;
 }
 input[type=checkbox] {    
-    margin: -.5rem 1rem 0 0;      
+    margin: 1.5rem 1rem 0 0;      
     width: 25px;
 }        
 .submit-button{
@@ -131,8 +129,14 @@ input[type=checkbox] {
     font-weight: inherit;
     margin: 2rem 0 2rem 0;
 }
-.required, .required-email-text, .required-query-radio,
- .required-consent-form, .success-toast{
+.required, .required-query-radio, .required-consent-form{
+    color: red;
+    display: flex;
+}
+.success-toast{
+    display: none;
+}
+.required-email-text{
     display: none;
 }
 .attribution { 
@@ -151,17 +155,19 @@ input[type=checkbox] {
         margin: 0 2rem 0 2rem;   
     }
     .name-container, .radio-group-container {
-    display: inline-flex;
-    gap: 1rem;
-    width: 100%;
-    margin: -2rem 0 0 0;
+        display: inline-flex;
+        gap: 1rem;
+        width: 100%;
+        margin: -2rem 0 0 0;
     }
     .name-group, .radio-wrapper{
-    width: 100%;
-    margin: 1.5rem 0 0 0;
+        width: 100%;
+        margin: 1.5rem 0 0 0;
     }
     #message{
-    height: 8rem;
-    margin: 0 0 3rem 0;
+        height: 6rem;
+    }
+    label{
+        display: inline-flex;
     }
 }
