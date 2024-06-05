@@ -22,6 +22,8 @@ class User
         ///consent
         this.consentInput = document.forms['main']['consent-text'];
         this.consentLabel = document.querySelector('#consent-label');
+
+        //if array/object of all inputs are filled => onclick submit modal
     }
 
     displayError(input, label) 
