@@ -28,30 +28,43 @@ class User
 
     displayError(input, label) 
     {
-        input.style.color = 'red';
         input.style.border = '1px solid red';
         label.style.display = 'flex';
+    }
+    refresh()
+    {
+        this.submit.addEventListener('click', () => 
+        {
+            document.location.reload();
+        });
     }
 
     validator() 
     {
         let errorStatus = true;
-        this.submit.addEventListener('click', () => 
+        if (errorStatus === true)
         {
-            //fname
-            this.firstNameInput.value === '' ? this.displayError(this.firstNameInput, this.firstNameLabel) : console.error();
-            //lname
-            this.lastNameInput.value === '' ? this.displayError(this.lastNameInput, this.lastNameLabel) : console.error();
-            //email
-            this.emailInput.value === '' ? this.displayError(this.emailInput, this.emailLabel) : console.error();
-            //query
-            // this.queryInput.value === '' ? this.displayError(this.queryInput, this.queryLabel) : console.error();
-            //message
-            this.messageInput.value === '' ? this.displayError(this.messageInput, this.messageLabel) : console.error();
-            //consent
-            this.consentInput.checked === false ? this.displayError(this.consentInput, this.consentLabel) : console.error();
-            
-        });
+            this.submit.addEventListener('click', () => 
+            {
+                //fname
+                (this.firstNameInput.value === '' || NaN || null) ? this.displayError(this.firstNameInput, this.firstNameLabel) : errorStatus === false;
+                //lname
+                (this.lastNameInput.value === '' || NaN || null) ? this.displayError(this.lastNameInput, this.lastNameLabel) : errorStatus === false;
+                //email
+                (this.emailInput.value === '' || NaN || null) ? this.displayError(this.emailInput, this.emailLabel) : errorStatus === false;
+                //query
+                // (this.queryInput.value === '') ? this.displayError(this.queryInput, this.queryLabel) : console.error(error);
+                //message
+                (this.messageInput.value === '' || NaN || null) ? this.displayError(this.messageInput, this.messageLabel) : errorStatus === false;
+                //consent
+                (this.consentInput.checked === false) ? this.displayError(this.consentInput, this.consentLabel) : errorStatus === false;
+                errorStatus === false;
+            }); 
+        }
+        else
+        {
+            this.refresh();
+        }
     }
 }
 
