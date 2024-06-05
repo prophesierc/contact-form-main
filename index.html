@@ -13,29 +13,29 @@
 
 </head>
 <body>    
-    <form class="form-container">
+    <form class="form-container" name="main">
       <div class="content-wrapper">
         <h1>Contact Us</h1>
 
         <div class="name-container">
           
           <div class="name-group">
-            <label for="fname-text">First Name </label>              
-            <input type="text" id="fname-text" name="fname-text" class="fname-label" required>
-            <p class="required" id="required-message">This field is required</p>
-          </div>
+            <label for="fname-text">First Name </label>
+            <input type="text" id="fname-text" name="fname-text" class="fname-input" required>
+            <p class="required" id="fname-label">This field is required</p>
+        </div>        
 
           <div class="name-group">
             <label for="lname-text">Last Name</label>              
             <input type="text" id="lname-text" name="lname-text" class="lname-label" required>
-            <p class="required" id="required-message">This field is required</p>
+            <p class="required" id="lname-label">This field is required</p>
           </div>
 
         </div>
       
         <label for="email-text">Email Address </label>          
         <input type="text" id="email-text" name="email-text" required>
-        <p class="required" id="required-message">This field is required</p>
+        <p class="required" id="email-label">This field is required</p>
         <p class="required-email-text">Please enter a valid email address</p>
 
         
@@ -55,17 +55,17 @@
 
           </div>          
         </div>
-        <p class="required-query-radio" id="required-message">Please select a query type</p>
+        <p class="required-query-radio" id="query-label">Please select a query type</p>
         
-        <label for="message">Message </label>
-        <input type="text" name="message" id="message" required>
-          <p class="required" id="required-message">This field is required</p>
+        <label for="message">Message</label>
+        <input type="text" name="message-text" id="message" required>
+          <p class="required" id="message-label">This field is required</p>
 
         <div class="checbox-wrapper">
-          <input type="checkbox" name="consent-form-check" id="consent-form-check" required>
+          <input type="checkbox" name="consent-text" id="consent-form-check" required>
           <label for="consent-form-check">I consent to being contacted by the team </label>          
         </div>
-        <p class="required-consent-form" id="required-message">To submit this form, please consent to being contacted</p>
+        <p class="required-consent-form" id="consent-label">To submit this form, please consent to being contacted</p>
 
         <input type="button" class="submit-button" value="Submit" id="submit-button">
         <!-- type='submit' if actual request -->

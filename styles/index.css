@@ -131,7 +131,7 @@ input[type=checkbox] {
     margin: 2rem 0 2rem 0;
 }
 .required, .required-query-radio, .required-consent-form{
-    color: red;
+    color: var(--primary-clr-red);
     display: none;
 }
 .success-toast{
