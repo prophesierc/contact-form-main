@@ -34,6 +34,10 @@ class User
     {
         (input.value === '' || null) ? this.displayError(input, label) : this.accessCount += 1;
     }
+    checkHandler(input, label)
+    {
+        (input.checked === false) ? this.displayError(input, label) : this.accessCount += 1;
+    }
     refresh()
     {
         this.submit.addEventListener('click', () => 
@@ -56,13 +60,14 @@ class User
                 this.inputHandler(this.lastNameInput, this.lastNameLabel);
                 //email
                 this.inputHandler(this.emailInput, this.emailLabel);                
-                //query                    
-                (this.queryInput[0].checked === false || this.queryInput[1].checked === false ) ? this.displayError(this.queryLabelGroup[0] && this.queryLabelGroup[1], this.queryLabel) : this.accessCount += 1;
+                //query                 
+                this.checkHandler(this.queryInput[0], this.queryLabel);         
+                console.log(this.queryInput[0].checked);
+                console.log(this.queryInput[1].checked);
                 //message
                 this.inputHandler(this.messageInput, this.messageLabel);
                 //consent
-                (this.consentInput.checked === false) ? this.displayError(this.consentInput, this.consentLabel) : this.accessCount += 1;
-                console.log(this.accessCount);
+                this.checkHandler(this.consentInput, this.consentLabel);                
             }); 
         }
         else
