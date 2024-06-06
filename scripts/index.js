@@ -3,40 +3,25 @@ class User
     constructor() 
     {
         this.submit = document.querySelector("#submit-button");
-        //fname
-        this.firstNameInput = document.forms['main']['fname-text'];
-        this.firstNameLabel = document.querySelector('#fname-label');
-        //lname
-        this.lastNameInput = document.forms['main']['lname-text'];
-        this.lastNameLabel = document.querySelector('#lname-label');
-        //email
-        this.emailInput = document.forms['main']['email-text'];
-        this.emailLabel = document.querySelector('#email-label');
-        //query
-        this.queryInput = document.getElementsByName('query-type');
-        this.queryLabel = document.querySelector('#query-label');
-        this.queryLabelGroup = document.querySelectorAll('.radio-wrapper');        
-        //message
-        this.messageInput = document.forms['main']['message-text'];
-        this.messageLabel = document.querySelector('#message-label');
-        ///consent
-        this.consentInput = document.forms['main']['consent-text'];
-        this.consentLabel = document.querySelector('#consent-label');
-        this.accessCount = 0;
+        this.inputs = document.forms['main'].getElementsByTagName("input");
+        this.labels = document.forms['main'].getElementsByTagName("label");
+        this.requiredText = document.forms['main'].getElementsByClassName("required");        
+        this.queryLabels = document.forms['main'].getElementsByClassName(".radio-wrapper");        
+        this.accessCount = 0;        
     }
 
-    displayError(input, label) 
+    displayError(input, requiredText) 
     {
         input.style.border = '1px solid red';
-        label.style.display = 'flex';
+        requiredText.style.display = 'block';
     }
-    inputHandler(input, label)
+    inputHandler(input, requiredText)
     {
-        (input.value === '' || null) ? this.displayError(input, label) : this.accessCount += 1;
+        (input.value === '' || null) ? this.displayError(input, requiredText) : this.accessCount += 1;
     }
-    checkHandler(input, label)
+    checkHandler(input, requiredText)
     {
-        (input.checked === false) ? this.displayError(input, label) : this.accessCount += 1;
+        (input.checked === false) ? this.displayError(input, requiredText) : this.accessCount += 1;
     }
     refresh()
     {
@@ -49,25 +34,20 @@ class User
     validator() 
     {
         let errorStatus = true;
-
         if (errorStatus === true)
         {
             this.submit.addEventListener('click', () => 
             {
-                //fname
-                this.inputHandler(this.firstNameInput, this.firstNameLabel);
-                //lname
-                this.inputHandler(this.lastNameInput, this.lastNameLabel);
-                //email
-                this.inputHandler(this.emailInput, this.emailLabel);                
-                //query                 
-                this.checkHandler(this.queryInput[0], this.queryLabel);         
-                console.log(this.queryInput[0].checked);
-                console.log(this.queryInput[1].checked);
-                //message
-                this.inputHandler(this.messageInput, this.messageLabel);
-                //consent
-                this.checkHandler(this.consentInput, this.consentLabel);                
+                this.inputHandler(this.inputs[0], this.requiredText[0]); //fname
+                this.inputHandler(this.inputs[1], this.requiredText[1]); //lname
+                this.inputHandler(this.inputs[2], this.requiredText[2]); //email
+
+                this.checkHandler(this.inputs[3], this.queryLabels[0]); //query1
+                this.checkHandler(this.inputs[4], this.queryLabels[1]); //query2
+                
+                this.inputHandler(this.inputs[5], this.requiredText[4]); //message
+                this.checkHandler(this.inputs[6], this.requiredText[5]); //consent
+
             }); 
         }
         else
