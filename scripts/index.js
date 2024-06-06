@@ -13,23 +13,26 @@ class User
         this.emailInput = document.forms['main']['email-text'];
         this.emailLabel = document.querySelector('#email-label');
         //query
-        this.queryInput = document.forms['main']['query-text'];
-        // this.queryLabel = document.querySelector('#query-label');
-        // wip (index of both queries to validate if some() === true)
+        this.queryInput = document.getElementsByName('query-type');
+        this.queryLabel = document.querySelector('#query-label');
+        this.queryLabelGroup = document.querySelectorAll('.radio-wrapper');        
         //message
         this.messageInput = document.forms['main']['message-text'];
         this.messageLabel = document.querySelector('#message-label');
         ///consent
         this.consentInput = document.forms['main']['consent-text'];
         this.consentLabel = document.querySelector('#consent-label');
-
-        //if array/object of all inputs are filled => onclick submit modal
+        this.accessCount = 0;
     }
 
     displayError(input, label) 
     {
         input.style.border = '1px solid red';
         label.style.display = 'flex';
+    }
+    inputHandler(input, label)
+    {
+        (input.value === '' || null) ? this.displayError(input, label) : this.accessCount += 1;
     }
     refresh()
     {
@@ -42,23 +45,24 @@ class User
     validator() 
     {
         let errorStatus = true;
+
         if (errorStatus === true)
         {
             this.submit.addEventListener('click', () => 
             {
                 //fname
-                (this.firstNameInput.value === '' || NaN || null) ? this.displayError(this.firstNameInput, this.firstNameLabel) : errorStatus === false;
+                this.inputHandler(this.firstNameInput, this.firstNameLabel);
                 //lname
-                (this.lastNameInput.value === '' || NaN || null) ? this.displayError(this.lastNameInput, this.lastNameLabel) : errorStatus === false;
+                this.inputHandler(this.lastNameInput, this.lastNameLabel);
                 //email
-                (this.emailInput.value === '' || NaN || null) ? this.displayError(this.emailInput, this.emailLabel) : errorStatus === false;
-                //query
-                // (this.queryInput.value === '') ? this.displayError(this.queryInput, this.queryLabel) : console.error(error);
+                this.inputHandler(this.emailInput, this.emailLabel);                
+                //query                    
+                (this.queryInput[0].checked === false || this.queryInput[1].checked === false ) ? this.displayError(this.queryLabelGroup[0] && this.queryLabelGroup[1], this.queryLabel) : this.accessCount += 1;
                 //message
-                (this.messageInput.value === '' || NaN || null) ? this.displayError(this.messageInput, this.messageLabel) : errorStatus === false;
+                this.inputHandler(this.messageInput, this.messageLabel);
                 //consent
-                (this.consentInput.checked === false) ? this.displayError(this.consentInput, this.consentLabel) : errorStatus === false;
-                errorStatus === false;
+                (this.consentInput.checked === false) ? this.displayError(this.consentInput, this.consentLabel) : this.accessCount += 1;
+                console.log(this.accessCount);
             }); 
         }
         else
