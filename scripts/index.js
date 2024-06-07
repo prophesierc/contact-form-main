@@ -1,61 +1,61 @@
-class User 
-{
-    constructor() 
-    {
+class User {
+    constructor() {
         this.submit = document.querySelector("#submit-button");
-        this.inputs = document.forms['main'].getElementsByTagName("input");
+        this.Inputborder = document.forms['main'].getElementsByTagName("input");
         this.labels = document.forms['main'].getElementsByTagName("label");
-        this.requiredText = document.forms['main'].getElementsByClassName("required");        
-        this.queryLabels = document.forms['main'].getElementsByClassName(".radio-wrapper");        
-        this.accessCount = 0;        
+        this.messageInput = document.getElementById("message");
+        this.requiredText = document.forms['main'].getElementsByClassName("required");
+        this.queryBorder = document.querySelectorAll(".radio-wrapper");
+        this.accessCount = 0;
+        this.listener();
+        this.modalToast = document.querySelector(".success-toast");
     }
 
-    displayError(input, requiredText) 
-    {
-        input.style.border = '1px solid red';
-        requiredText.style.display = 'block';
+    displayError(input, requiredText) {
+        input.style.border = '1px solid hsl(0, 66%, 54%)';
+        requiredText.style.display = 'flex';
     }
-    inputHandler(input, requiredText)
-    {
-        (input.value === '' || null) ? this.displayError(input, requiredText) : this.accessCount += 1;
+
+    hideError(input, requiredText) {
+        input.style.border = '1px solid hsl(186, 15%, 59%)';
+        requiredText.style.display = 'none';
     }
-    checkHandler(input, requiredText)
-    {
-        (input.checked === false) ? this.displayError(input, requiredText) : this.accessCount += 1;
+
+    inputHandler(input, requiredText) {
+        input.value.trim() === '' ? this.displayError(input, requiredText) : (this.accessCount++, this.hideError(input, requiredText));
     }
-    refresh()
+
+    radioHandler(supportInput, generalInput, supportBorder, generalBorder, requiredText) {
+        !supportInput.checked && !generalInput.checked ? this.displayError(supportBorder, requiredText) || this.displayError(generalBorder, requiredText) : this.accessCount++;
+    }
+
+    checkHandler(input, requiredText) {
+        !input.checked ? this.displayError(input, requiredText) : this.accessCount++;
+    }
+
+    modal()
     {
-        this.submit.addEventListener('click', () => 
-        {
-            document.location.reload();
+        this.modalToast.style.display = 'block';
+    }
+
+    listener() {
+        this.submit.addEventListener('click', (event) => {
+            event.preventDefault();
+            this.validator();
+            this.modal(); // needs validator
         });
     }
 
-    validator() 
-    {
-        let errorStatus = true;
-        if (errorStatus === true)
-        {
-            this.submit.addEventListener('click', () => 
-            {
-                this.inputHandler(this.inputs[0], this.requiredText[0]); //fname
-                this.inputHandler(this.inputs[1], this.requiredText[1]); //lname
-                this.inputHandler(this.inputs[2], this.requiredText[2]); //email
+    validator() {
+        this.accessCount = 0;
 
-                this.checkHandler(this.inputs[3], this.queryLabels[0]); //query1
-                this.checkHandler(this.inputs[4], this.queryLabels[1]); //query2
-                
-                this.inputHandler(this.inputs[5], this.requiredText[4]); //message
-                this.checkHandler(this.inputs[6], this.requiredText[5]); //consent
-
-            }); 
-        }
-        else
-        {
-            this.refresh();
-        }
+        this.inputHandler(this.Inputborder[0], this.requiredText[0]); // fname
+        this.inputHandler(this.Inputborder[1], this.requiredText[1]); // lname
+        this.inputHandler(this.Inputborder[2], this.requiredText[2]); // email
+        this.radioHandler(this.Inputborder[3], this.Inputborder[4], this.queryBorder[0], this.queryBorder[1], this.requiredText[3]); // radio
+        this.inputHandler(this.messageInput, this.requiredText[4]); // message
+        this.checkHandler(this.Inputborder[5], this.requiredText[5]); // consent
     }
 }
 
 const user = new User();
-user.validator();

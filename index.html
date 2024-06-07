@@ -40,25 +40,22 @@
 
         
         <h2>Query Type </h2>
-        <div class="radio-group-container">
+        <div class="radio-group-container" id="radio-group-container">
           <div class="radio-wrapper">
-
-            <input type="radio" id="general-radio" name="query-type" value="general-radio">
-            <label for="general-radio" class="general-radio">General Enquiry</label>
-
+              <input type="radio" id="general-radio" name="query" value="general-radio">
+              <label for="general-radio" class="general-radio">General Enquiry</label>
           </div>
-            
+              
           <div class="radio-wrapper">
-
-            <input type="radio" id="support-radio" name="query-type" value="support-radio">
-            <label for="support-radio" class="support-radio">Support Request</label>              
-
+              <input type="radio" id="support-radio" name="query" value="support-radio">
+              <label for="support-radio" class="support-radio">Support Request</label>              
           </div>          
-        </div>
+      </div>
+      
         <p class="required" id="query-label">Please select a query type</p>
         
         <label for="message">Message</label>
-        <input type="text" name="message-text" id="message" required>
+        <textarea name="message-text" id="message" required></textarea>
           <p class="required" id="message-label">This field is required</p>
 
         <div class="checbox-wrapper">
@@ -68,12 +65,15 @@
         <p class="required" id="consent-label">To submit this form, please consent to being contacted</p>
 
         <input type="button" class="submit-button" value="Submit" id="submit-button">
-        <!-- type='submit' if actual request -->
       </div>
     </form>
 
-      <p class="success-toast">Message Sent!
-      Thanks for completing the form. We'll be in touch soon!</p>
+    <p class="success-toast">
+      <img src="/assets/images/icon-success-check.svg" id="icon-success-check">
+      <span>Message Sent!<br></span>
+      Thanks for completing the form. We'll be in touch soon!
+  </p>
+      
   </div>
   
   <div class="attribution">
