@@ -10,17 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to Server
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p /home/deploy/.ssh
-        echo "$SSH_PRIVATE_KEY" > /home/deploy/.ssh/id_rsa
-        chmod 600 /home/deploy/.ssh/id_rsa
-        ssh -i /home/deploy/.ssh/id_rsa -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
-        cd /var/www/prophesierc.site/prophesierc/
-        git pull origin main
-        sudo systemctl restart nginx
-        EOF
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
+          cd /var/www/prophesierc.site
+          git pull origin main
+          sudo systemctl restart nginx
+          EOF
