@@ -13,9 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H prophesierc.site >> ~/.ssh/known_hosts
+
       - name: Deploy to Server
         run: |
-          ssh -v -i /home/deploy/.ssh/id_rsa -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
           cd /var/www/prophesierc.site/prophesierc/
           git pull origin main
           sudo systemctl restart nginx
