@@ -3,25 +3,28 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - main
+      - main 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to Server
+      - name: Install SSH Client
         run: |
-          ssh -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
-          cd /var/www/prophesierc.site
-          git pull origin main
-          sudo systemctl restart nginx
-          EOF
+          sudo apt update
+          sudo apt install openssh-client
+
+      - name: Deploy via SSH
+        uses: appleboy/scp-action@master
+        with:
+          host: prophesierc.site
+          username: deploy
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "prophesierc"
+          target: "/var/www/prophesierc.site/prophesierc/"  
+          strip-components: 1
+          port: 22
