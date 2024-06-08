@@ -6,7 +6,7 @@ class User {
         this.messageInput = document.getElementById("message");
         this.requiredText = document.forms['main'].getElementsByClassName("required");
         this.queryBorder = document.querySelectorAll(".radio-wrapper");
-        this.accessCount = 0;
+        this.accessToken = 0;
         this.listener();
         this.modalToast = document.querySelector(".success-toast");
     }
@@ -22,20 +22,21 @@ class User {
     }
 
     inputHandler(input, requiredText) {
-        input.value.trim() === '' ? this.displayError(input, requiredText) : (this.accessCount++, this.hideError(input, requiredText));
+        input.value.trim() === '' ? this.displayError(input, requiredText) : this.hideError(input, requiredText), (this.accessToken++);
     }
 
     radioHandler(supportInput, generalInput, supportBorder, generalBorder, requiredText) {
-        !supportInput.checked && !generalInput.checked ? this.displayError(supportBorder, requiredText) || this.displayError(generalBorder, requiredText) : this.accessCount++;
+        !supportInput.checked && !generalInput.checked ? this.displayError(supportBorder, requiredText) || this.displayError(generalBorder, requiredText) : this.accessToken++;
     }
 
     checkHandler(input, requiredText) {
-        !input.checked ? this.displayError(input, requiredText) : this.accessCount++;
+        !input.checked ? this.displayError(input, requiredText) : this.accessToken++;
     }
 
     modal()
     {
-        this.modalToast.style.display = 'block';
+        console.log(this.accessToken)
+        // this.modalToast.style.display = 'block';
     }
 
     listener() {
@@ -47,8 +48,6 @@ class User {
     }
 
     validator() {
-        this.accessCount = 0;
-
         this.inputHandler(this.Inputborder[0], this.requiredText[0]); // fname
         this.inputHandler(this.Inputborder[1], this.requiredText[1]); // lname
         this.inputHandler(this.Inputborder[2], this.requiredText[2]); // email
