@@ -10,18 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H prophesierc.site >> ~/.ssh/known_hosts
-
     - name: Deploy to Server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
-        ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
-        cd /path/to/your/app
+        mkdir -p /home/deploy/.ssh
+        echo "$SSH_PRIVATE_KEY" > /home/deploy/.ssh/id_rsa
+        chmod 600 /home/deploy/.ssh/id_rsa
+        ssh -i /home/deploy/.ssh/id_rsa -o StrictHostKeyChecking=no deploy@prophesierc.site << 'EOF'
+        cd /var/www/prophesierc.site/prophesierc/
         git pull origin main
         sudo systemctl restart nginx
         EOF
+
 
