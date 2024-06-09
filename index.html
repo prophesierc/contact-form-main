@@ -12,61 +12,61 @@
   
 </head>
 <body>    
-  <header>
-    <h1>Contact Us</h1>
-  </header>
-
-  <main>
-    <form class="form-container" name="main">
+  <form class="form-container" name="main">
       <div class="content-wrapper">
-        <div class="name-container">
-          <div class="name-group">
-            <label for="fname-text">First Name </label>
-            <input type="text" id="fname-text" name="fname-text" class="fname-input" required>
-            <p class="required" id="fname-label">This field is required</p>
-          </div>        
+    <header>
+      <h1>Contact Us</h1>
+    </header>
 
-          <div class="name-group">
-            <label for="lname-text">Last Name</label>              
-            <input type="text" id="lname-text" name="lname-text" class="lname-label" required>
-            <p class="required" id="lname-label">This field is required</p>
-          </div>
-        </div>
-      
-        <label for="email-text">Email Address </label>          
-        <input type="text" id="email-text" name="email-text" required>
-        <p class="required" id="email-label">This field is required</p>
-        <p class="required-email-text">Please enter a valid email address</p>
+    <main>
+          <div class="name-container">
+            <div class="name-group">
+              <label for="fname-text">First Name </label>
+              <input type="text" id="fname-text" name="fname-text" class="fname-input" required>
+              <p class="required" id="fname-label">This field is required</p>
+            </div>        
 
-        <h2>Query Type </h2>
-        <div class="radio-group-container" id="radio-group-container">
-          <div class="radio-wrapper">
-            <input type="radio" id="general-radio" name="query" value="general-radio">
-            <label for="general-radio" class="general-radio">General Enquiry</label>
+            <div class="name-group">
+              <label for="lname-text">Last Name</label>              
+              <input type="text" id="lname-text" name="lname-text" class="lname-label" required>
+              <p class="required" id="lname-label">This field is required</p>
+            </div>
           </div>
-              
-          <div class="radio-wrapper">
-            <input type="radio" id="support-radio" name="query" value="support-radio">
-            <label for="support-radio" class="support-radio">Support Request</label>              
-          </div>          
-        </div>
-      
-        <p class="required" id="query-label">Please select a query type</p>
         
-        <label for="message">Message</label>
-        <textarea name="message-text" id="message" required></textarea>
-        <p class="required" id="message-label">This field is required</p>
+          <label for="email-text">Email Address </label>          
+          <input type="text" id="email-text" name="email-text" required>
+          <p class="required" id="email-label">This field is required</p>
+          <p class="required-email-text">Please enter a valid email address</p>
 
-        <div class="checkbox-wrapper">
-          <input type="checkbox" name="consent-text" id="consent-form-check" required>
-          <label for="consent-form-check">I consent to being contacted by the team </label>          
-        </div>
-        <p class="required" id="consent-label">To submit this form, please consent to being contacted</p>
+          <h2>Query Type </h2>
+          <div class="radio-group-container" id="radio-group-container">
+            <div class="radio-wrapper">
+              <input type="radio" id="general-radio" name="query" value="general-radio">
+              <label for="general-radio" class="general-radio">General Enquiry</label>
+            </div>
+                
+            <div class="radio-wrapper">
+              <input type="radio" id="support-radio" name="query" value="support-radio">
+              <label for="support-radio" class="support-radio">Support Request</label>              
+            </div>          
+          </div>
+        
+          <p class="required" id="query-label">Please select a query type</p>
+          
+          <label for="message">Message</label>
+          <textarea name="message-text" id="message" required></textarea>
+          <p class="required" id="message-label">This field is required</p>
 
-        <input type="button" class="submit-button" value="Submit" id="submit-button">
-      </div>
-    </form>
-  </main>
+          <div class="checkbox-wrapper">
+            <input type="checkbox" name="consent-text" id="consent-form-check" required>
+            <label for="consent-form-check">I consent to being contacted by the team </label>          
+          </div>
+          <p class="required" id="consent-label">To submit this form, please consent to being contacted</p>
+
+          <input type="button" class="submit-button" value="Submit" id="submit-button">
+          </div>
+    </main>
+  </form>
 
   <p class="success-toast">
     <img src="./assets/images/icon-success-check.svg" id="icon-success-check" alt="success-toast">
