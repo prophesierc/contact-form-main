@@ -13,6 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Add a debugging step to print environment variables
+      - name: Debug GitHub Actions Environment
+        run: |
+          env | sort
+
+      # Print contents of the target directory on the remote server
+      - name: List Remote Directory
+        run: ssh -i ${{ secrets.SSH_PRIVATE_KEY }} deploy@prophesierc.site ls -la /var/www/prophesierc.site/prophesierc/contact-form
+
       - name: Copy files to server
         uses: appleboy/scp-action@master
         with:
