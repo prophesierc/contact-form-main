@@ -9,6 +9,7 @@ class User
         this.requiredText = document.forms['main'].getElementsByClassName("required");
         this.modalToast = document.querySelector(".success-toast");
         this.radio = document.getElementsByClassName("radio-wrapper");
+        this.emailRequiredText = document.querySelector(".required-email-text");
         this.changeListener();
         this.listener();
     }
@@ -75,6 +76,16 @@ class User
         : (this.modalToast.style.display = 'none');
 
     }
+    
+    emailHandler(input, requiredText, emailRequiredText) {
+        const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+        input.value.trim() === '' 
+        ? this.displayError(input, requiredText)
+        : (!regex.test(input.value)
+        ? (this.hideError(input, requiredText), this.displayError(input, emailRequiredText))
+        : (this.hideError(input, requiredText), this.hideError(input, emailRequiredText)));
+    }
 
     listener() 
     {
@@ -86,7 +97,6 @@ class User
         });
         this.changeListener();
     }
-    
 
     validator() 
     {
@@ -95,6 +105,9 @@ class User
             this.inputHandler(this.Inputborder[0], this.requiredText[0]); // fname
             this.inputHandler(this.Inputborder[1], this.requiredText[1]); // lname
             this.inputHandler(this.Inputborder[2], this.requiredText[2]); // email
+
+            this.emailHandler(this.Inputborder[2], this.requiredText[2], this.emailRequiredText); // email Regex
+
             this.radioHandler(this.Inputborder[3], this.Inputborder[4], this.requiredText[3]); // radio
             this.inputHandler(this.messageInput, this.requiredText[4]); // message
             this.checkHandler(this.Inputborder[5], this.requiredText[5]); // consent
