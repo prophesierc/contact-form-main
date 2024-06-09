@@ -12,24 +12,25 @@
   
 </head>
 <body>    
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <main>
     <form class="form-container" name="main">
       <div class="content-wrapper">
-        <h1>Contact Us</h1>
-
         <div class="name-container">
-          
           <div class="name-group">
             <label for="fname-text">First Name </label>
             <input type="text" id="fname-text" name="fname-text" class="fname-input" required>
             <p class="required" id="fname-label">This field is required</p>
-        </div>        
+          </div>        
 
           <div class="name-group">
             <label for="lname-text">Last Name</label>              
             <input type="text" id="lname-text" name="lname-text" class="lname-label" required>
             <p class="required" id="lname-label">This field is required</p>
           </div>
-
         </div>
       
         <label for="email-text">Email Address </label>          
@@ -37,25 +38,24 @@
         <p class="required" id="email-label">This field is required</p>
         <p class="required-email-text">Please enter a valid email address</p>
 
-        
         <h2>Query Type </h2>
         <div class="radio-group-container" id="radio-group-container">
           <div class="radio-wrapper">
-              <input type="radio" id="general-radio" name="query" value="general-radio">
-              <label for="general-radio" class="general-radio">General Enquiry</label>
+            <input type="radio" id="general-radio" name="query" value="general-radio">
+            <label for="general-radio" class="general-radio">General Enquiry</label>
           </div>
               
           <div class="radio-wrapper">
-              <input type="radio" id="support-radio" name="query" value="support-radio">
-              <label for="support-radio" class="support-radio">Support Request</label>              
+            <input type="radio" id="support-radio" name="query" value="support-radio">
+            <label for="support-radio" class="support-radio">Support Request</label>              
           </div>          
-      </div>
+        </div>
       
         <p class="required" id="query-label">Please select a query type</p>
         
         <label for="message">Message</label>
         <textarea name="message-text" id="message" required></textarea>
-          <p class="required" id="message-label">This field is required</p>
+        <p class="required" id="message-label">This field is required</p>
 
         <div class="checkbox-wrapper">
           <input type="checkbox" name="consent-text" id="consent-form-check" required>
@@ -66,18 +66,18 @@
         <input type="button" class="submit-button" value="Submit" id="submit-button">
       </div>
     </form>
+  </main>
 
-    <p class="success-toast">
-      <img src="/assets/images/icon-success-check.svg" id="icon-success-check">
-      <span>Message Sent!<br></span>
-      Thanks for completing the form. We'll be in touch soon!
+  <p class="success-toast">
+    <img src="./assets/images/icon-success-check.svg" id="icon-success-check" alt="success-toast">
+    <span>Message Sent!<br></span>
+    Thanks for completing the form. We'll be in touch soon!
   </p>
       
-  </div>
-  
-  <div class="attribution">
+  <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/prophesierc">Your Name Here</a>.
-  </div>
+  </footer>
+  
 </body>
 </html>
