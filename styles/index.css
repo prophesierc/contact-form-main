@@ -15,7 +15,6 @@
     /* colors */
     --primary-clr-green-200: hsl(148, 38%, 91%);
     --primary-clr-green-600:hsl(169, 82%, 27%);
-    --primary-clr-green-900:hsl(185, 24%, 22%);
     --primary-clr-red: hsl(0, 66%, 54%);
     --neutral-clr-white: hsl(0, 0%, 100%);
     --neutral-clr-grey-500: hsl(186, 15%, 59%);
@@ -61,11 +60,11 @@ h2{
     font-size: inherit;
     font-weight: inherit;
     color: var(--neutral-clr-grey-900);
-    margin: 1rem 0 1.5rem 0;
+    margin: 1em 0 1.5em 0;
 }
 label{    
     display: flex;
-    margin: 2rem 0 .5rem 0;
+    margin: 2em 0 .5em 0;
     font-size: var(--fs-label);
     font-weight: var(--fw-regular);
     color: var(--neutral-clr-grey-900);    
@@ -76,17 +75,28 @@ h2::after{
     color: var(--primary-clr-green-600);
 }
 input[type=text]{
+    color: var(--neutral-clr-grey-900);
     width: 100%;
-    height: 3rem;
-    border: 1px var(--neutral-clr-grey-500) solid;
+    height: 2.5em;
+    border: 1px solid var(--neutral-clr-grey-500);
     border-radius: var(--br);
     font-size: 20px;
     font-family: var(--ff-Karla);
+    padding-left: 1.5em;
+}  
+input[type=text]:hover, #message:hover{
+    border: 1px solid var(--primary-clr-green-600);
 }
-
+input[type=text]:focus, #message:focus {
+    outline: none;
+    border: 1px solid var(--primary-clr-green-600);
+}
+input:hover, .general-radio:hover, .support-radio:hover{
+    cursor: pointer;
+}
 input[type=radio] + label{
     display: inline-flex;
-    margin: 1rem 0 1rem 0;
+    margin: 1em 0 1em 0;
 }
 input[type=radio] {
     margin: 0 .5rem 0 0;    
@@ -97,38 +107,60 @@ input[type=radio] {
     top: -2.5px;
 }
 .radio-wrapper{
-    padding: 0 0 0 1.5rem;
+    padding: 0 0 0 1.5em;
     border: 1px var(--neutral-clr-grey-500) solid;
     border-radius: var(--br);
-    margin: 0 0 1rem 0;
+    margin: 0 0 1em 0;
 }
+
+.radio-wrapper:hover {
+    background-color: var(--primary-clr-green-200);
+}
+
 #message {
-    height: 15rem; 
-    margin: 0 0 .5rem 0;
+    color: var(--neutral-clr-grey-900);
+    resize: vertical;
+    height: 15em; 
     width: 100%;
     border: 1px solid var(--neutral-clr-grey-500); 
     border-radius: var(--br);
-    font-size: var(--fs-label); 
+    font-size: 14px;
     font-family: var(--ff-Karla); 
-    padding: 0.5rem; 
+    font-weight: var(--fw-regular);
+    padding: 0.5em; 
+    padding-left: 1.5em; 
+    line-height: 1.5em;
 }
-.checbox-wrapper{
+.checkbox-wrapper{
     display: inline-flex;
     text-wrap: wrap;
 }
 input[type=checkbox] + label{
     font-size: var(--fs-label);
     display: inline;
-    margin: 1.5rem 1rem 0 .5rem;
-    border-radius: 50px;
+    margin: 1.5em 1em 0 .5em;
 }
 input[type=checkbox] {    
-    margin: 1.5rem 1rem 0 0;      
+    border: 1px solid var(--neutral-clr-grey-500);
+    appearance: none;
+    margin: 2.5em 1em 2em 0;
     width: 25px;
-}        
+    height: 20px;
+    background-size: 70%;
+}   
+input[type=checkbox]:checked {    
+    border: 1px solid var(--neutral-clr-white);
+    background: url('/assets/images/icon-checkbox-check.svg');
+}  
+#general-radio:checked, #support-radio:checked{
+    appearance: none;
+    background-image: url('/assets/images/icon-radio-selected.svg');
+    background-size: contain; 
+    background-repeat: no-repeat;
+}
 .submit-button{
     width: 100%;
-    height: 3rem;
+    height: 3em;
     background-color: var(--primary-clr-green-600);
     border: 1px var(--primary-clr-green-600) solid;
     border-radius: var(--br);
@@ -136,28 +168,39 @@ input[type=checkbox] {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
-    margin: 2rem 0 2rem 0;
+    margin: 2em 0 2em 0;
 }
+.submit-button:hover{
+    background-color: var(--neutral-clr-grey-900);
+}
+.submit-button:disabled {
+    background: grey;
+    cursor: auto;
+  }
 .required{
+    margin: 1em 0 0 0;
     color: var(--primary-clr-red);
     display: none;
 }
 .success-toast{
+    z-index: 1;
     font-size: var(--fs-label); 
     font-family: var(--ff-Karla); 
     font-weight: var(--fw-regular);
     color: var(--neutral-clr-white);
-    background-color: var(--primary-clr-green-900);
-    position: absolute;
-    top: 5.5%;
+    background-color: var(--neutral-clr-grey-900);
+    position: fixed;
+    top: 7%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: .5rem 1.5rem 1rem 1.5rem;
-    border: 1px solid var(--primary-clr-green-900);
+    padding: .5em 1.5em 1em 1.5em;
+    width: 20em;
+    border: 1px solid var(--neutral-clr-grey-900);
     border-radius: var(--br);
     align-items: center;
-    line-height: 1.8rem;
+    line-height: 1.8em;
     display: none;
+    animation: fadeIn 0.3s ease-out;
 }
 .success-toast span {
     font-weight: var(--fw-bold);
@@ -177,29 +220,58 @@ input[type=checkbox] {
 .attribution a { 
     color: hsl(228, 45%, 44%); 
 }
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+}
+  
 @media only screen and (min-width: 600px) {
     body {
         height: 100vh;
     }
     .content-wrapper {
-        margin: 0 2rem 0 2rem;
+        margin: 0 2em 0 2em;
     }
     .name-container,
     .radio-group-container {
         display: inline-flex;
-        gap: 1rem;
+        gap: 1em;
         width: 100%;
-        margin: -2rem 0 0 0;
+        margin: -2em 0 0 0;
     }
     .name-group,
     .radio-wrapper {
         width: 100%;
-        margin: 1.5rem 0 0 0;
+        margin: 1.5em 0 0 0;
     }
     #message {
-        height: 6rem;
+        height: 6em;
     }
     label {
         display: inline-flex;
     }
+    input[type=checkbox] {    
+        width: 20px;
+        height: 20px;
+    } 
+}
+
+@media only screen and (min-width: 450px) {
+    input[type=checkbox] {    
+        margin: 1.8em 1em 0 0;
+        width: 20px;
+        height: 20px;
+    } 
 }
