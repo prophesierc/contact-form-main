@@ -167,9 +167,7 @@ input[type=checkbox]:checked {
     font-weight: inherit;
     margin: 2em 0 2em 0;
 }
-.submit-button:hover{
-    background-color: var(--neutral-clr-grey-900);
-}
+
 .submit-button:disabled {
     background: grey;
     cursor: auto;
@@ -265,6 +263,9 @@ input[type=checkbox]:checked {
         width: 20px;
         height: 20px;
     } 
+    .submit-button:hover{
+        background-color: var(--neutral-clr-grey-900);
+    }
 }
 
 @media only screen and (min-width: 450px) {
